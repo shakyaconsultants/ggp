@@ -32,45 +32,51 @@ const port = Number(process.env.PORT) || 3000;
 
 const cors = require("cors");
 
+const ALLOWED_ORIGINS = [
+  "https://ggp-navy.vercel.app",
+  "https://ourganik.in",
+  "http://ourganik.in",
+  "https://www.ourganik.in",
+  "http://www.ourganik.in",
+  "https://www.goodgutproject.in",
+  "https://goodgutproject.in",
+  "http://localhost:3000",
+  "http://127.0.0.1:3000",
+  "http://localhost:5174",
+  "http://127.0.0.1:5174",
+];
+
+if (process.env.CORS_ORIGINS) {
+  process.env.CORS_ORIGINS.split(",")
+    .map((o) => o.trim())
+    .filter(Boolean)
+    .forEach((o) => {
+      if (!ALLOWED_ORIGINS.includes(o)) ALLOWED_ORIGINS.push(o);
+    });
+}
+
+function isOriginAllowed(origin) {
+  if (!origin) return true;
+  if (ALLOWED_ORIGINS.includes(origin)) return true;
+  // Vercel preview deployments for this project
+  if (/^https:\/\/ggp-[a-z0-9-]+\.vercel\.app$/i.test(origin)) return true;
+  return false;
+}
+
 app.use(
   cors({
-    origin: [
-      "ggp-navy.vercel.app",
-      "https://ourganik.in",
-      "http://ourganik.in",
-      "https://www.ourganik.in",
-      "http://www.ourganik.in",
-      "https://www.goodgutproject.in",
-      "https://goodgutproject.in",
-      "http://localhost:3000",
-      "http://127.0.0.1:3000",
-      "http://localhost:5174",
-      "http://127.0.0.1:5174",
-    ],
-    credentials: true
+    origin(origin, callback) {
+      if (isOriginAllowed(origin)) {
+        callback(null, origin || true);
+      } else {
+        callback(null, false);
+      }
+    },
+    credentials: true,
+    methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
+    allowedHeaders: ["Content-Type", "Authorization", "x-api-key"],
   })
 );
-// Handle preflight requests (OPTIONS)
-app.options("*", (req, res) => {
-  const allowedOrigins = [
-    "ggp-navy.vercel.app",
-    "https://ourganik.in",
-    "http://ourganik.in",
-    "https://www.ourganik.in",
-    "http://www.ourganik.in",
-    "https://www.goodgutproject.in",
-    "https://goodgutproject.in",
-    "http://localhost:3000",
-    "http://127.0.0.1:3000",
-    "http://localhost:5174",
-    "http://127.0.0.1:5174",
-  ];
-  const origin = req.headers.origin;
-  if (allowedOrigins.includes(origin)) {
-    res.header("Access-Control-Allow-Origin", origin);
-  }
-  res.sendStatus(200);
-});
 
 // Middleware
 app.use("/api/billing/webhook", express.raw({ type: "application/json" }));
