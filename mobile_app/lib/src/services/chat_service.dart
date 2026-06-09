@@ -16,7 +16,10 @@ class ChatService {
   static String get wsUrl {
     final uri = Uri.parse(AppStrings.apiURL);
     final scheme = uri.scheme == 'https' ? 'wss' : 'ws';
-    return '$scheme://${uri.host}:${uri.port}/ws/chat';
+    final defaultPort = uri.scheme == 'https' ? 443 : 80;
+    final portSuffix =
+        uri.hasPort && uri.port != defaultPort ? ':${uri.port}' : '';
+    return '$scheme://${uri.host}$portSuffix/ws/chat';
   }
 
   static Future<List<Map<String, dynamic>>> fetchMessages() async {

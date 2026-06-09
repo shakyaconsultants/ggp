@@ -7,13 +7,15 @@ export default defineConfig({
     port: 5174,
     proxy: {
       "/api": {
-        target: "http://localhost:3000",
+        target: "https://ourganik.in",
         changeOrigin: true,
+        secure: true,
       },
       "/ws": {
-        target: "http://localhost:3000",
+        target: "https://ourganik.in",
         ws: true,
         changeOrigin: true,
+        secure: true,
       },
     },
   },

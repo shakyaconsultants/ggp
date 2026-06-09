@@ -53,7 +53,7 @@ class AppStrings {
   static const String update = 'Update';
   static const String cancel = 'Cancel';
 
-  static const String apiURL = "http://127.0.0.1:3000/api";
+  static const String apiURL = "https://ourganik.in/api";
   
   static const String versionUrl = "/version";
   static const String loginURL = "/login";

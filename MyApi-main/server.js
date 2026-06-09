@@ -35,6 +35,10 @@ const cors = require("cors");
 app.use(
   cors({
     origin: [
+      "https://ourganik.in",
+      "http://ourganik.in",
+      "https://www.ourganik.in",
+      "http://www.ourganik.in",
       "https://www.goodgutproject.in",
       "https://goodgutproject.in",
       "http://localhost:3000",
@@ -48,6 +52,10 @@ app.use(
 // Handle preflight requests (OPTIONS)
 app.options("*", (req, res) => {
   const allowedOrigins = [
+    "https://ourganik.in",
+    "http://ourganik.in",
+    "https://www.ourganik.in",
+    "http://www.ourganik.in",
     "https://www.goodgutproject.in",
     "https://goodgutproject.in",
     "http://localhost:3000",

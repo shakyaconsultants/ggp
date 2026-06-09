@@ -6,7 +6,7 @@ const {
 } = require("../common/nutritionistClientAccess");
 const router = express.Router();
 const jwt = require("jsonwebtoken");
-const bcrypt = require("bcrypt");
+const bcrypt = require("bcryptjs");
 const ggpKey = process.env.GGP_SECRET_KEY; // Use the same secret key as the rest of the app
 const {
   TRIAL_DAYS,
