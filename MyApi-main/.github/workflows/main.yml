@@ -1,0 +1,42 @@
+on: 
+  push:
+    branches:
+      - main
+name: 🚀 Deploy website on push
+jobs:
+  web-deploy:
+    name: 🎉 Deploy
+    runs-on: ubuntu-latest
+    steps:
+    - name: 🚚 Get latest code
+      uses: actions/checkout@v4
+
+    - name: Use Node.js 16
+      uses: actions/setup-node@v2
+      with:
+        node-version: '16'
+      
+    - name: 🔨 Build Project
+      run: |
+        npm install
+    
+    - name: 📂 Sync files
+      uses: SamKirkland/FTP-Deploy-Action@v4.3.5
+      with:
+        server: ${{ secrets.FTP_SERVER }}
+        username: ${{ secrets.FTP_USERNAME }}
+        password: ${{ secrets.FTP_PASSWORD }}
+
+    - name: 🔄 Restart Node.js App via SSH
+      uses: appleboy/ssh-action@v0.1.4
+      with:
+        host: s769.use1.mysecurecloudhost.com
+        username: gamescr1
+        key: ${{ secrets.SSH_KEY }}
+        passphrase: ${{ secrets.SSH_PASSPHRASE }}
+        port: 22
+        script: |
+          source /home/gamescr1/nodevenv/gamescreed.net/ggp/20/bin/activate && cd /home/gamescr1/gamescreed.net/ggp
+          ps ax | grep 'lsnode:/home/gamescr1/gamescreed.net/ggp/' | grep -v grep | awk '{print $1}' | xargs kill
+          curl https://api.goodgutproject.in/test
+

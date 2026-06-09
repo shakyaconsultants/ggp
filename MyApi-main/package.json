@@ -1,0 +1,29 @@
+{
+  "name": "my-api",
+  "version": "1.0.0",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "node server.js",
+    "db:init": "node scripts/init-db.js",
+    "db:seed-slots": "node scripts/seed-consultation-slots.js",
+    "db:seed-admin": "node scripts/seed-admin.js",
+    "db:setup": "npm run db:init && npm run db:seed-slots && npm run db:seed-admin"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "description": "Good Gut Project API — MySQL backend for SaaS portal and mobile app",
+  "dependencies": {
+    "bcrypt": "^5.1.1",
+    "bcryptjs": "^2.4.3",
+    "cors": "^2.8.5",
+    "dotenv": "^16.4.5",
+    "express": "^4.21.0",
+    "jsonwebtoken": "^9.0.2",
+    "mysql2": "^3.11.3",
+    "razorpay": "^2.9.6",
+    "swagger-ui-express": "^5.0.1",
+    "ws": "^8.18.0"
+  }
+}

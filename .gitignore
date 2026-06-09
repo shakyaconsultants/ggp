@@ -1,0 +1,36 @@
+# OS
+.DS_Store
+Thumbs.db
+Desktop.ini
+
+# IDE / editors
+.vscode/
+.idea/
+*.iml
+*.swp
+*.swo
+*~
+
+# Environment & secrets (keep .env.example files)
+.env
+.env.*
+!.env.example
+
+# Dependencies & build output (all subprojects)
+**/node_modules/
+**/dist/
+**/build/
+**/.dart_tool/
+
+# Logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+
+# Local / temp
+*.local
+.cache/
+tmp/
+temp/

@@ -1,0 +1,15 @@
+services:
+  - type: web
+    name: ggp-api
+    runtime: node
+    rootDir: MyApi-main
+    buildCommand: npm install
+    releaseCommand: npm run db:init && npm run db:seed-admin
+    startCommand: npm start
+    envVars:
+      - key: NODE_ENV
+        value: production
+      - key: DB_SKIP_CREATE
+        value: "true"
+      - key: PORT
+        value: "3000"

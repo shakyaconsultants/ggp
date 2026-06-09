@@ -1,0 +1,60 @@
+name: good_gut
+description: "A new Flutter project."
+
+# Prevent accidental publishing to pub.dev.
+publish_to: 'none'
+
+version: 1.0.0+1
+
+environment:
+  sdk: '>=3.4.4 <4.0.0'
+
+dependencies:
+  flutter:
+    sdk: flutter
+  flutter_localizations:
+    sdk: flutter
+  flutter_switch:
+  flutter_ruler_picker:
+  ruler_picker_bn:
+  shared_preferences: ^2.3.3
+  intl:
+  url_launcher:
+  http:
+  carousel_slider:
+  flutter_chat_ui: ^1.6.15
+  file_picker:
+  image_picker:
+  mime:
+  open_filex:
+  path_provider:
+  uuid:
+  permission_handler:
+  webview_flutter: ^4.10.0
+  flutter_plugin_android_lifecycle: ^2.0.22
+  web_socket_channel: ^2.1.0
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  flutter_launcher_icons: ^0.14.1
+  change_app_package_name: ^1.4.0
+  flutter_lints: ^3.0.0
+
+flutter_launcher_icons:
+  android: "launcher_icon"
+  ios: true
+  remove_alpha_ios: true
+  image_path: "assets/images/ggp_icon.png"
+  min_sdk_android: 24 
+  adaptive_icon_background: "#F07E28"
+  adaptive_icon_foreground: "assets/images/ggp_icon.png"
+  
+flutter:
+  uses-material-design: true
+
+  # Enable generation of localized Strings from arb files.
+  generate: true
+
+  assets:
+    - assets/images/
