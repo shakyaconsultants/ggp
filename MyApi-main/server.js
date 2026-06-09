@@ -35,6 +35,7 @@ const cors = require("cors");
 app.use(
   cors({
     origin: [
+      "ggp-navy.vercel.app",
       "https://ourganik.in",
       "http://ourganik.in",
       "https://www.ourganik.in",
@@ -52,6 +53,7 @@ app.use(
 // Handle preflight requests (OPTIONS)
 app.options("*", (req, res) => {
   const allowedOrigins = [
+    "ggp-navy.vercel.app",
     "https://ourganik.in",
     "http://ourganik.in",
     "https://www.ourganik.in",
