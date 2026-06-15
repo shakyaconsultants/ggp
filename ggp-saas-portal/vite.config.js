@@ -7,12 +7,12 @@ export default defineConfig({
     port: 5174,
     proxy: {
       "/api": {
-        target: "https://ourganik.in",
+        target: "https://gg.shakyaconsultants.com",
         changeOrigin: true,
         secure: true,
       },
       "/ws": {
-        target: "https://ourganik.in",
+        target: "https://gg.shakyaconsultants.com",
         ws: true,
         changeOrigin: true,
         secure: true,

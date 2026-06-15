@@ -38,5 +38,5 @@ jobs:
         script: |
           source /home/gamescr1/nodevenv/gamescreed.net/ggp/20/bin/activate && cd /home/gamescr1/gamescreed.net/ggp
           ps ax | grep 'lsnode:/home/gamescr1/gamescreed.net/ggp/' | grep -v grep | awk '{print $1}' | xargs kill
-          curl https://api.goodgutproject.in/test
+          curl https://gg.shakyaconsultants.com/test
 

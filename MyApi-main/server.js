@@ -34,12 +34,18 @@ const cors = require("cors");
 
 const ALLOWED_ORIGINS = [
   "https://ggp-navy.vercel.app",
+  "https://gg.shakyaconsultants.com",
+  "http://gg.shakyaconsultants.com",
+  "https://www.gg.shakyaconsultants.com",
+  "http://www.gg.shakyaconsultants.com",
   "https://ourganik.in",
   "http://ourganik.in",
   "https://www.ourganik.in",
   "http://www.ourganik.in",
   "https://www.goodgutproject.in",
+  "http://www.goodgutproject.in",
   "https://goodgutproject.in",
+  "http://goodgutproject.in",
   "http://localhost:3000",
   "http://127.0.0.1:3000",
   "http://localhost:5174",

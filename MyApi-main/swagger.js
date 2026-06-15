@@ -12,7 +12,7 @@ const swaggerDefinition = {
       description: "Local development",
     },
     {
-      url: "https://api.goodgutproject.in",
+      url: "https://gg.shakyaconsultants.com",
       description: "Production",
     },
   ],
